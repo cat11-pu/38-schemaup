@@ -15,10 +15,10 @@ const back = roundtrip(upgraded.fields, spec.known_fields || []);
 const out = render(spec);
 
 emit("升级后的版本 =", upgraded.version);
-emit("升级后的字段 =", JSON.stringify(upgraded.fields));
-emit("应用的步骤 =", JSON.stringify(upgraded.path));
-emit("认识的字段 =", JSON.stringify(view.fields));
-emit("保留的未知字段 =", JSON.stringify(view.unknown));
+emit("升级后的字段 =", upgraded.fields);
+emit("应用的步骤 =", upgraded.path);
+emit("认识的字段 =", view.fields);
+emit("保留的未知字段 =", view.unknown);
 emit("往返是否保真 =", back.same);
 emit("重复升级是否幂等 =", out.idempotent);
 emit("缺升级路径的错误码 =", spec.no_path_code);
