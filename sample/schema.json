@@ -1,0 +1,11 @@
+{
+  "no_path_code": "E_NO_PATH",
+  "target_version": 3,
+  "known_fields": ["title", "owner"],
+  "record": {"version": 1, "fields": {"name": "alpha", "owner": "bob", "legacy_note": "keep me"}},
+  "steps": [
+    {"from": 1, "to": 2, "ops": [{"op": "rename", "from": "name", "to": "title"}]},
+    {"from": 2, "to": 3, "ops": [{"op": "add", "name": "priority", "value": 5},
+                                 {"op": "drop", "name": "legacy_note"}]}
+  ]
+}
