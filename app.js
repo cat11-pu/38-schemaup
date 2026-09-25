@@ -6,7 +6,9 @@ export function render(spec) {
   const upgraded = upgrade(spec.record, spec.steps, spec.target_version);
   const view = read(upgraded.fields, spec.known_fields || []);
   const back = roundtrip(upgraded.fields, spec.known_fields || []);
+  const again = upgrade({ version: upgraded.version, fields: upgraded.fields }, spec.steps, spec.target_version);
+  const idempotent = JSON.stringify(again.fields) === JSON.stringify(upgraded.fields);
   return { version: upgraded.version, fields: upgraded.fields, path: upgraded.path,
            known: view.fields, unknown_kept: view.unknown.length,
-           roundtrip: back.same, idempotent: true };
+           roundtrip: back.same, idempotent: idempotent };
 }
